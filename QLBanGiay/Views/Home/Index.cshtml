@@ -1,0 +1,22 @@
+﻿@model IEnumerable<QLBanGiay.Models.SanPham>
+@using QLBanGiay.Models
+@using System.Linq
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3" style="background-color: lavender; width:390px; height:260px; margin-top: 5px; text-align :center;">
+                <h3 style="font-size: 18px ;color : grey ; ">  @Html.DisplayFor(modelItem => item.TenSP) </h3>
+                @Html.Image("../" + item.HinhSP, "alt", "100") <br />
+               <span style=" color:darkred;"> @Html.DisplayFor(modelItem => item.Dongia)</span> <br />
+                <a class="btn btn-info btn-sm" href="@Url.Action("Details", "SanPhams", new { id = item.MaSP })">
+                    Xem chi tiết
+                </a>
+            </div>
+        }
+    </div>
